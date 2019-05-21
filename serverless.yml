@@ -11,7 +11,6 @@ provider:
   name: aws
   runtime: nodejs8.10
   stage: dev
-  profile: rpidanny01
   region: us-east-1
   iamRoleStatements:
     - Effect: Allow
