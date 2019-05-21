@@ -61,8 +61,14 @@ provider:
 functions:
   stopInstances:
     handler: stopInstances.handler
+    description: Stop Instances with matching Tag
+    memorySize: 128
+    timeout: 30
   startInstances:
     handler: startInstances.handler
+    description: Start Instances with matching Tag
+    memorySize: 128
+    timeout: 30
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
