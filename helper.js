@@ -39,8 +39,22 @@ const stopInstances = instances => new Promise((resolve, reject) => {
   })
 })
 
+const startInstances = instances => new Promise((resolve, reject) => {
+  ec2.startInstances({
+    ...params,
+    InstanceIds: instances.map(instance => instance.Instances[0].InstanceId)
+  }, function (err, data) {
+    if (err) {
+      reject(err)
+    } else {
+      resolve(data)
+    }
+  })
+})
+
 module.exports = {
   listInstances,
   stopInstances,
+  startInstances,
   filterInstancesByTag
 }
