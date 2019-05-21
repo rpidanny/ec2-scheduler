@@ -8,8 +8,14 @@ module.exports.handler = (event, context, callback) => {
     .then(instances => {
       console.log(JSON.stringify(instances, null, 2))
       const filteredInstances = filterInstancesByTag(instances, scheduler.filterTag)
-      console.log(`Starting ${filteredInstances.length} instances...`)
-      return startInstances(filteredInstances)
+      if (filteredInstances > 0) {
+        console.log(`Stopping ${filteredInstances.length} instances...`)
+        return startInstances(filteredInstances)
+      } else {
+        callback(null, {
+          message: 'No instances to start.'
+        })
+      }
     })
     .then(data => {
       console.log(JSON.stringify(data, null, 2))
