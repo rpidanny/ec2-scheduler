@@ -8,7 +8,7 @@ module.exports.handler = (event, context, callback) => {
     .then(instances => {
       console.log(JSON.stringify(instances, null, 2))
       const filteredInstances = filterInstancesByTag(instances, scheduler.filterTag)
-      if (filteredInstances > 0) {
+      if (filteredInstances.length > 0) {
         console.log(`Stopping ${filteredInstances.length} instances...`)
         return stopInstances(filteredInstances)
       } else {
