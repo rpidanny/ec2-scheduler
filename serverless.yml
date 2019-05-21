@@ -17,10 +17,24 @@ service: ec2-scheduler # NOTE: update this with your service name
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
 
+plugins:
+  - serverless-offline
+  - serverless-plugin-include-dependencies
+  - serverless-plugin-optimize
+
+package:
+  individually: true
+  exclude:
+    - node_modules/**
+    - README.md
+    - package.json
+    - package-lock.json
+
 provider:
   name: aws
   runtime: nodejs8.10
   stage: dev
+  profile: rpidanny01
   region: us-east-1
   iamRoleStatements:
     - Effect: Allow
@@ -45,8 +59,8 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  ec2Scheduler:
+    handler: index.handler
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
