@@ -62,11 +62,19 @@ functions:
   stopInstances:
     handler: stopInstances.handler
     description: Stop Instances with matching Tag
+    events:
+      - schedule:
+        rate: cron(00 16 * * ? *)
+        enabled: false
     memorySize: 128
     timeout: 30
   startInstances:
     handler: startInstances.handler
     description: Start Instances with matching Tag
+    events:
+      - schedule:
+        rate: cron(00 05 * * ? *)
+        enabled: false
     memorySize: 128
     timeout: 30
 
