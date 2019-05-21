@@ -38,7 +38,7 @@ package:
 
 functions:
   stopInstances:
-    handler: stopInstances.handler
+    handler: src/stopInstances.handler
     description: Stop Instances with matching Tag
     events:
       - schedule:
@@ -47,7 +47,7 @@ functions:
     memorySize: 128
     timeout: 30
   startInstances:
-    handler: startInstances.handler
+    handler: src/startInstances.handler
     description: Start Instances with matching Tag
     events:
       - schedule:
