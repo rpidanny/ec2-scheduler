@@ -5,13 +5,13 @@ frameworkVersion: "=1.41.1"
 plugins:
   - serverless-offline
   - serverless-plugin-include-dependencies
-  - serverless-plugin-optimize
+  # - serverless-plugin-optimize
 
 provider:
   name: aws
   runtime: nodejs8.10
   stage: dev
-  region: us-east-1
+  region: eu-central-1
   versionFunctions: false
   iamRoleStatements:
     - Effect: Allow
@@ -42,8 +42,8 @@ functions:
     description: Stop Instances with matching Tag
     events:
       - schedule:
-        rate: cron(00 16 * * ? *)
-        enabled: false
+          rate: cron(00 18 * * ? *)
+          enabled: false
     memorySize: 128
     timeout: 30
   startInstances:
@@ -51,7 +51,7 @@ functions:
     description: Start Instances with matching Tag
     events:
       - schedule:
-        rate: cron(00 05 * * ? *)
-        enabled: false
+          rate: cron(00 06 * * ? *)
+          enabled: false
     memorySize: 128
     timeout: 30
